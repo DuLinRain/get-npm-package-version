@@ -16,4 +16,11 @@ describe('test webpack and webpackxxx', () => {
         });
         expect(version).to.be.equal(null);
     }).timeout(10 * 1000);
+    // test defence Command Injection attack
+    it('test defence Command Injection Attack', () => {
+        const version = getVersion('get-npm-package-version; echo hehe; npm view get-npm-package-version', {
+            timeout: 100
+        });
+        expect(version).to.be.equal(null);
+    }).timeout(10 * 1000);
 });
